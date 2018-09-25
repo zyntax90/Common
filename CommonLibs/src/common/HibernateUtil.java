@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 
 	private static SessionFactory _sessionFactory;
-	private static StandardServiceRegistry standardServiceRegistryBuilder;
+	private static StandardServiceRegistry _standardServiceRegistryBuilder;
 
 	public static SessionFactory getSessionFactory(String configurationPath, String mappingPath) {
 		if (_sessionFactory == null) {
@@ -18,15 +18,15 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration();
 			configuration.configure(new File(configurationPath));
 			configuration.addResource(mappingPath);
-			standardServiceRegistryBuilder = new StandardServiceRegistryBuilder()
+			_standardServiceRegistryBuilder = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
-			_sessionFactory = configuration.buildSessionFactory(standardServiceRegistryBuilder);
+			_sessionFactory = configuration.buildSessionFactory(_standardServiceRegistryBuilder);
 		}
 		return _sessionFactory;
 	}
 
 	public static void destroyRegistryBuilder() {
-		StandardServiceRegistryBuilder.destroy(standardServiceRegistryBuilder);
+		StandardServiceRegistryBuilder.destroy(_standardServiceRegistryBuilder);
 	}
 
 }
