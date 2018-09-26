@@ -14,7 +14,6 @@ public class RssTests {
 
 		RssUtil rssUtil = RssUtil.getInstance("https://nyaa.si/?page=rss");
 		RssChannel channel = rssUtil.getObjectFromRssFeed();
-		channel.getRssItems().forEach(x->System.out.println(x));
 		assertTrue(channel.getRssItems().size() > 1);
 	}
 

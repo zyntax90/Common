@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class RssItem {
+class RssItem {
 
 	private String _title;
 	private String _link;
