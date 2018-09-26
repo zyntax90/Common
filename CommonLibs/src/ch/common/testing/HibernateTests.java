@@ -1,4 +1,4 @@
-package testing;
+package ch.common.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import common.HibernateUtil;
+import ch.common.utils.HibernateUtil;
 
 class HibernateTests {
 
@@ -19,8 +19,7 @@ class HibernateTests {
 
 	@BeforeAll
 	static void initializeTestData() {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory(
-				"C:\\Users\\Zyntax\\eclipse-workspace\\CommonLibs\\src\\hibernate.cfg.xml", "HibernateTests.hbm.xml");
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
 
 		Session session = null;
 
@@ -31,7 +30,6 @@ class HibernateTests {
 			testObj = new TestPojo();
 			testObj.TestColumn = TestValue;
 			session.save(testObj);
-
 			session.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -45,8 +43,7 @@ class HibernateTests {
 
 	@Test
 	void testSelectData() {
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory(
-				"C:\\Users\\Zyntax\\eclipse-workspace\\CommonLibs\\src\\hibernate.cfg.xml", "HibernateTests.hbm.xml");
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
 
 		Session session = null;
 
@@ -66,9 +63,7 @@ class HibernateTests {
 
 	@AfterAll
 	static void cleardown() {
-		SessionFactory sessionFactory = HibernateUtil
-				.getSessionFactory("C:\\Users\\Zyntax\\eclipse-workspace\\Sandbox\\src\\hibernate.cfg.xml",
-						"HibernateTests.hbm.xml");
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
 
 		Session session = null;
 
@@ -76,7 +71,7 @@ class HibernateTests {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 
-						session.delete(testObj);
+			session.delete(testObj);
 
 			session.getTransaction().commit();
 

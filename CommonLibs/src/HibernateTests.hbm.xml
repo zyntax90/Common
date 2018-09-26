@@ -3,7 +3,7 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 15.09.2018 16:33:19 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
- <class name="testing.TestPojo" table="testtable">
+ <class name="ch.common.testing.TestPojo" table="testtable">
   <id column="ID" name="Id"/>
   <property column="TEST_COLUMN" name="TestColumn" type="string" not-null="true"/>
  </class>

@@ -1,4 +1,4 @@
-package testing;
+package ch.common.testing;
 
 
 public class TestPojo {

@@ -1,6 +1,5 @@
-package common;
+package ch.common.utils;
 
-import java.io.File;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -16,7 +15,7 @@ public class HibernateUtil {
 		if (_sessionFactory == null) {
 
 			Configuration configuration = new Configuration();
-			configuration.configure(new File(configurationPath));
+			configuration.configure(configurationPath);
 			configuration.addResource(mappingPath);
 			_standardServiceRegistryBuilder = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
