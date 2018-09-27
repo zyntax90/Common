@@ -18,7 +18,6 @@ import javax.xml.stream.events.XMLEvent;
 
 public class RssUtil {
 
-	private static RssUtil _rssUtil;
 	private final URL _url;
 
 	/**
@@ -33,18 +32,12 @@ public class RssUtil {
 	private final DateFormat rssDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);
 	private final DateFormat localDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.GERMAN);
 
-	private RssUtil(String url) {
+	public RssUtil(String url) {
 		try {
 			_url = new URL(url);
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
-	}
-
-	public static RssUtil getInstance(String url) {
-		if (_rssUtil == null)
-			_rssUtil = new RssUtil(url);
-		return _rssUtil;
 	}
 
 	public RssChannel getObjectFromRssFeed() {

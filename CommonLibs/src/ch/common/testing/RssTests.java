@@ -12,7 +12,7 @@ public class RssTests {
 	@Test
 	void testRssUtil() {
 
-		RssUtil rssUtil = RssUtil.getInstance("https://nyaa.si/?page=rss");
+		RssUtil rssUtil = new RssUtil("https://nyaa.si/?page=rss");
 		RssChannel channel = rssUtil.getObjectFromRssFeed();
 		assertTrue(channel.getRssItems().size() > 1);
 	}
