@@ -15,21 +15,20 @@ import ch.common.utils.HibernateUtil;
 class HibernateTests {
 
 	private final static String TestValue = "TestValue";
-	private static TestPojo testObj;
+	private static TestPojo TestObj;
 
 	@BeforeAll
 	static void initializeTestData() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
-
 		Session session = null;
 
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 
-			testObj = new TestPojo();
-			testObj.TestColumn = TestValue;
-			session.save(testObj);
+			TestObj = new TestPojo();
+			TestObj.TestColumn = TestValue;
+			session.save(TestObj);
 			session.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -37,14 +36,12 @@ class HibernateTests {
 			session.getTransaction().rollback();
 		} finally {
 			session.close();
-
 		}
 	}
 
 	@Test
 	void testSelectData() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
-
 		Session session = null;
 
 		try {
@@ -57,24 +54,20 @@ class HibernateTests {
 			e.printStackTrace();
 		} finally {
 			session.close();
-
 		}
 	}
 
 	@AfterAll
 	static void cleardown() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory("hibernate.cfg.xml", "HibernateTests.hbm.xml");
-
 		Session session = null;
 
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
-
-			session.delete(testObj);
-
+			session.delete(TestObj);
 			session.getTransaction().commit();
-
+			assertTrue(session.get(TestPojo.class, TestObj.Id) == null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

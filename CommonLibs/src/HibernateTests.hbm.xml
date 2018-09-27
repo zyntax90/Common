@@ -4,7 +4,9 @@
 <!-- Generated 15.09.2018 16:33:19 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
  <class name="ch.common.testing.TestPojo" table="testtable">
-  <id column="ID" name="Id"/>
+  <id column="ID" name="Id">
+  <generator class="identity"/>
+  </id>
   <property column="TEST_COLUMN" name="TestColumn" type="string" not-null="true"/>
  </class>
 </hibernate-mapping>
