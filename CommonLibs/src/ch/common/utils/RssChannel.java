@@ -5,17 +5,17 @@ import java.util.List;
 
 public class RssChannel {
 
-	private List<RssItem> _rssItems;
+	private List<RssItem> rssItems;
 
 	public RssChannel() {
-		_rssItems = new ArrayList<RssItem>();
+		rssItems = new ArrayList<RssItem>();
 	}
 
 	public void AddItem(RssItem item) {
-		_rssItems.add(item);
+		rssItems.add(item);
 	}
 	
 	public List<RssItem> getRssItems(){
-		return _rssItems;
+		return rssItems;
 	}
 }

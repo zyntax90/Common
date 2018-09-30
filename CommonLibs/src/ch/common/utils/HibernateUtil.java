@@ -8,24 +8,24 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-	private static SessionFactory _sessionFactory;
-	private static StandardServiceRegistry _standardServiceRegistryBuilder;
+	private static SessionFactory sessionFactory;
+	private static StandardServiceRegistry standardServiceRegistryBuilder;
 
 	public static SessionFactory getSessionFactory(String configurationPath, String mappingPath) {
-		if (_sessionFactory == null) {
+		if (sessionFactory == null) {
 
 			Configuration configuration = new Configuration();
 			configuration.configure(configurationPath);
 			configuration.addResource(mappingPath);
-			_standardServiceRegistryBuilder = new StandardServiceRegistryBuilder()
+			standardServiceRegistryBuilder = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
-			_sessionFactory = configuration.buildSessionFactory(_standardServiceRegistryBuilder);
+			sessionFactory = configuration.buildSessionFactory(standardServiceRegistryBuilder);
 		}
-		return _sessionFactory;
+		return sessionFactory;
 	}
 
 	public static void destroyRegistryBuilder() {
-		StandardServiceRegistryBuilder.destroy(_standardServiceRegistryBuilder);
+		StandardServiceRegistryBuilder.destroy(standardServiceRegistryBuilder);
 	}
 
 }

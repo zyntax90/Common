@@ -8,12 +8,12 @@ import javax.mail.internet.MimeMessage;
 
 public class MailUtil {
 
-	private String _username;
-	private String _password;
+	private String username;
+	private String password;
 
 	public MailUtil(String username, String password) {
-		_username = username;
-		_password = password;
+		this.username = username;
+		this.password = password;
 	}
 
 	public void sendMail(String smtpHost, Mail mail) throws MessagingException {
@@ -33,7 +33,7 @@ public class MailUtil {
 
 		Transport transport = session.getTransport("smtps");
 		try {
-			transport.connect(smtpHost, _username, _password);
+			transport.connect(smtpHost, username, password);
 			transport.sendMessage(message, message.getAllRecipients());
 		} finally {
 			transport.close();

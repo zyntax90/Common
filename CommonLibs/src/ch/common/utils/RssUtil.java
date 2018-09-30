@@ -18,7 +18,7 @@ import javax.xml.stream.events.XMLEvent;
 
 public class RssUtil {
 
-	private final URL _url;
+	private final URL url;
 
 	/**
 	 * @category: Constant RSS Values
@@ -34,7 +34,7 @@ public class RssUtil {
 
 	public RssUtil(String url) {
 		try {
-			_url = new URL(url);
+			this.url = new URL(url);
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
@@ -49,7 +49,7 @@ public class RssUtil {
 		boolean isHeader = true;
 
 		try {
-			eventReader = inputFactory.createXMLEventReader(_url.openStream());
+			eventReader = inputFactory.createXMLEventReader(url.openStream());
 			while (eventReader.hasNext()) {
 				XMLEvent xmlEvent = eventReader.nextEvent();
 
