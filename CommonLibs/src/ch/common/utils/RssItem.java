@@ -1,15 +1,20 @@
 package ch.common.utils;
 
-import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
-class RssItem {
+public class RssItem {
 
+	public static final String TITLE = "Title";
+	public static final String LINK = "Link";
+	public static final String GUID = "GUID";
+	public static final String PUBDATE = "Published Date";
+	public static final String DESCR = "Description";
+	
 	private String title;
 	private String link;
 	private String guid;
-	private Date pubDate;
+	private String pubDate;
 	private String description;
 	private Map<String, String> otherValues;
 
@@ -41,11 +46,11 @@ class RssItem {
 		this.guid = guid;
 	}
 
-	public Date getPubDate() {
+	public String getPubDate() {
 		return pubDate;
 	}
 
-	public void setPubDate(Date pubDate) {
+	public void setPubDate(String pubDate) {
 		this.pubDate = pubDate;
 	}
 
@@ -59,6 +64,10 @@ class RssItem {
 
 	public void addToMap(String itemName, String itemValue) {
 		otherValues.put(itemName, itemValue);
+	}
+	
+	public Map<String, String> getOtherValues(){
+		return otherValues;
 	}
 
 }

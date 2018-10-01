@@ -85,7 +85,7 @@ public class RssUtil {
 						String dateString = getCharacterData(xmlEvent, eventReader);
 						Date rssDate = rssDateFormat.parse(dateString);
 						String localDateString = localDateFormat.format(rssDate);
-						item.setPubDate(localDateFormat.parse(localDateString));
+						item.setPubDate(localDateString);
 						break;
 
 					case DESCRIPTION:
